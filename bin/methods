@@ -1,0 +1,52 @@
+#! /usr/bin/env node
+
+// Node.js
+var path = require('path');
+
+// node_modules
+var file = require('fs-utils');
+var prompt = require('prompt');
+var chalk = require('chalk');
+
+// Local libs
+var methods = require('../index');
+var templates = require('../lib/template');
+
+// Args
+var lib          = process.argv[2];
+var filename     = process.argv[3];
+var userTemplate = process.argv[4];
+
+// Default opts
+var tmpl;
+
+function success(filepath) {
+  console.log(chalk.green('\n>> Saved file ') +
+    '"' + filepath + '.json' + '"' + chalk.green(' OK'));
+};
+
+if (userTemplate && userTemplate in templates) {
+  tmpl = templates[userTemplate];
+} else if(userTemplate) {
+  try {
+    tmpl = require(path.resolve(process.cwd(), userTemplate));
+  } catch (e) {
+    try {
+      tmpl = require(path.resolve(process.cwd(), 'node_modules', userTemplate));
+    } catch (e) {
+      console.warn('Specified template cannot be found.');
+    }
+  }
+} else {
+  tmpl = templates.base;
+}
+
+if(filename) {
+  if(path.extname(filename) === '.json' || path.extname(filename) === '.yml') {
+    methods.writeData(filename, lib, {template: tmpl});
+  } else {
+    methods.writeFile(filename, lib, {template: tmpl});
+  }
+} else {
+  methods.writeFile(lib + '.md', lib, {template: tmpl});
+}
