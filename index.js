@@ -1,21 +1,24 @@
 /**
- * list-functions
+ * list-methods
  * Copyright (c) 2014 Jon Schlinkert, contributors.
  * Licensed under the MIT license.
  */
 
 'use strict';
 
+// Node.js
+var path  = require('path');
 
-var path = require('path');
-var chalk = require('chalk');
-var file = require('fs-utils');
-var _ = require('lodash');
+// node_modules
+var chalk    = require('chalk');
+var file     = require('fs-utils');
+var template = require('template');
+var _        = require('lodash');
 
 var success = chalk.green;
+var templates = require('./lib/template');
 
-var functions = module.exports = function(src, options) {
-  var opts = _.extend({}, options);
+var methods = module.exports = function(src) {
   var name = file.base(src);
   var source;
 
@@ -28,29 +31,20 @@ var functions = module.exports = function(src, options) {
     } catch(e) {}
   }
 
-  var fn = _.functions(source);
+  var fn = _.methods(source);
   return _.extend(fn, {name: name});
 };
 
-
-functions.writeFile = function(dest, src, options) {
-  var opts = _.extend({}, options);
-  var data = functions(src, opts);
-  var tmpl;
-
-  // Custom template? If so, try to require it first
-  try { tmpl = require(opts.template); } catch(e) {
-    tmpl = opts.template || require('./lib/template').base;
-  }
-  var output = _.template(tmpl, {data: data});
+methods.writeFile = function(dest, src, options) {
+  var opts = _.extend({template: templates.docs}, options);
+  var data = methods(src);
+  var output = template(opts.template, _.extend({data: data}, opts));
   file.writeFileSync(dest, output);
   console.log(success('>> File written to'), dest, success('OK'));
 };
 
-
-functions.writeData = function(dest, src, options) {
-  var opts = _.extend({}, options);
-  var data = functions(src, opts);
+methods.writeDataFile = function(dest, src) {
+  var data = methods(src);
   file.writeDataSync(dest, data);
   console.log(success('>> File written to'), dest, success('OK'));
 };

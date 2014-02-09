@@ -1,0 +1,10 @@
+# =============================================
+# <%= data.name %> methods
+# =============================================
+<% _.forEach(data, function(fn) { %>
+<%- fn %>:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+<% }); %>

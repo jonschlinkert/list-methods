@@ -1,52 +1,77 @@
 #! /usr/bin/env node
 
 // Node.js
-var path = require('path');
+var path      = require('path');
 
 // node_modules
-var file = require('fs-utils');
-var prompt = require('prompt');
-var chalk = require('chalk');
+var prompt    = require('prompt');
+var chalk     = require('chalk');
+var file      = require('fs-utils');
+
+var success   = chalk.green;
+var warn      = chalk.yellow;
+var error     = chalk.red;
 
 // Local libs
-var methods = require('../index');
+var methods   = require('../index');
 var templates = require('../lib/template');
 
 // Args
-var lib          = process.argv[2];
-var filename     = process.argv[3];
-var userTemplate = process.argv[4];
+var src, dest, tmpl, name = '';
 
-// Default opts
-var tmpl;
+if(process.argv.length === 2) {
+  // If no destination was given
+  methods.writeFile('docs.md', file.findFile('*.js'), {template: templates.docs});
+  return;
+} else {
+  src  = process.argv[2];
+  dest = process.argv[3];
+}
+
+if(process.argv[4]) {
+  tmpl = process.argv[4];
+  name = tmpl;
+}
 
 function success(filepath) {
   console.log(chalk.green('\n>> Saved file ') +
-    '"' + filepath + '.json' + '"' + chalk.green(' OK'));
+    '"' + filepath + '.json' + '"' + success(' OK'));
 };
-
-if (userTemplate && userTemplate in templates) {
-  tmpl = templates[userTemplate];
-} else if(userTemplate) {
+if (tmpl in templates) {
+  tmpl = templates[tmpl];
+  console.warn('Using built-in template:', name, success('OK'));
+} else if(tmpl) {
   try {
-    tmpl = require(path.resolve(process.cwd(), userTemplate));
+    // If it's a string, try to require it as a npm module.
+    tmpl = require(opts.template);
+    console.warn('Requiring template:', name, 'from node_modules', success('OK'));
   } catch (e) {
     try {
-      tmpl = require(path.resolve(process.cwd(), 'node_modules', userTemplate));
-    } catch (e) {
-      console.warn('Specified template cannot be found.');
+      // If that doesn't work, try to require it locally.
+      tmpl = require(path.resolve(opts.template));
+      console.warn('Requiring template:', name, success('OK'));
+    } catch(e) {
+      // As a last resort, try to use it directly, or
+      // fallback on the built-in "docs" template
+      tmpl = opts.template || templates.docs;
+      console.warn('Using the "docs" template.', success('OK'));
     }
   }
 } else {
-  tmpl = templates.base;
+  tmpl = templates.docs;
+  console.warn('Using template:', name, success('OK'));
 }
 
-if(filename) {
-  if(path.extname(filename) === '.json' || path.extname(filename) === '.yml') {
-    methods.writeData(filename, lib, {template: tmpl});
+// a destination was given:
+if(dest) {
+  if(file.ext(dest) === 'json') {
+    methods.writeData(dest, src);
+  } else if(file.ext(dest) === 'yml') {
+    methods.writeFile(dest, src, {template: templates.yaml});
   } else {
-    methods.writeFile(filename, lib, {template: tmpl});
+    methods.writeFile(dest, src, {template: tmpl});
   }
 } else {
-  methods.writeFile(lib + '.md', lib, {template: tmpl});
+  // If no destination was given
+  methods.writeFile(file.base(src) + '.md', src, {template: tmpl});
 }

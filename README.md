@@ -5,21 +5,13 @@
 
 ## Quickstart
 
-To install with [npm](), in the command line run:
+Install with [npm](npmjs.org):
 
 ```bash
 npm i -g list-methods
 ```
 
-Now, anytime you want to list the methods in a file or npm module, run the following in the command line:
-
-```
-// local lib
-methods path/to/foo.js
-
-// npm module
-methods foo
-```
+Next, run the `methods` command without any arguments and a markdown file will be generated for the first javascript file found in the current directory.
 
 ## Params
 
@@ -32,16 +24,55 @@ methods [src] [dest] [template]
 
 
 ## Usage
-Only the `src` (target file or npm module) is required. If no other arguments are passed, upon entering the `methods foo` command a markdown file (`foo.md`) will be generated in the same directory.
 
-### Basic list
-
-To list the methods from, say Lo-Dash, in the command line run:
+### src only
 
 ```js
-methods lodash
+methods [src]
 ```
-and a markdown file, `lodash.md`, will be saved in the same directory, containing a list of all the properties on the Lo-Dash object. e.g. something like:
+
+The first argument is the target source file or npm module. For example, `methods foo` will generate markdown file named `foo.md` in the current directory.
+
+Either of the following will work:
+
+```bash
+// local lib
+methods path/to/foo.js
+
+// npm module
+methods my_npm_module
+```
+
+### src and dest
+
+```js
+methods [src] [dest]
+```
+
+The second argument is the destination path. For example, `methods foo docs.md` will generate markdown file named `docs.md` in the current directory. _Also note that the destination path is "extension-sensitive", meaning that if a `.yml` or `.json` extensions are used, the generated file will be formatted in YAML or JSON instead of markdown._
+
+
+### src, dest and template
+
+```js
+methods [src] [dest] [template]
+```
+
+The third argument is the [template to use](./lib/templates.js). By default, a [simple markdown list](#basic-list) is generated. Additional templates are:
+
+* `docs`
+* `yaml`
+
+See [templates](#templates) for additional options.
+
+
+## Templates
+
+### base
+
+The `base` template does not need to be specified and will generate a simple, markdown-formatted list of methods.
+
+Try running `methods lodash` in the command line (assuming [Lo-Dash](http://lodash.com/) is already installed locally). If successful, a markdown file, `lodash.md`, will have been saved to the current directory, and inside will be something like:
 
 ```markdown
 # lodash properties
@@ -59,18 +90,7 @@ and a markdown file, `lodash.md`, will be saved in the same directory, containin
 etc...
 
 ```
-
-### Specify dest file
-
-Optionally specify a destination:
-
-```bash
-methods lodash "tmp/lodash.md"
-```
-
-#### JSON/YAML format
-
-JSON or YAML will automatically be generated if the destination file extension ends in `.json` or `.yml`. e.g.:
+If the destination path ends in a `.json` file extension, a JSON file will be generated instead, e.g.:
 
 ```js
 [
@@ -85,11 +105,9 @@ JSON or YAML will automatically be generated if the destination file extension e
 ]
 ```
 
-## Templates
+### docs
 
-Only two templates are included by default. The `base` template, which generates a simple list and does not need to be specified, and the `docs` template, which can be specified as a fourth parameter, e.g. `methods lodash lodash.md docs`.
-
-The output would look something like:
+The `docs` template, specified with `methods lodash lodash.md docs`, will generate a markdown-formatted "starter" file for documentation. Using the Lo-Dash example from the last section, the resuls would look something like this:
 
 ```markdown
 # lodash methods
@@ -128,24 +146,65 @@ etc...
 
 ```
 
+### yaml
+
+Like the other templates, the `yaml` template is specified as a fourth paramter. Also, this template will automatically be used if the destination file path ends in a `.yml` extension.
+
+The output for the Lo-Dash example would look something like:
+
+```yaml
+...
+bindAll:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+bindKey:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+chain:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+clone:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+cloneDeep:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+  ... cont.
+```
+
 ## Custom templates
 
-Easily customize the output by creating a custom template. The template can either be a local file or npm module and, like the `docs` template, should be specified as a fourth parameter.
+Easily customize the output by creating a custom template. The template can either be a local file or npm module. Like the included templates, custom templates should also be specified as a fourth parameter.
 
-For example, to use `my-template.js`, you would enter the following in the command line:
-
-```bash
-methods lodash lodash.md my-template.js
-```
-Or if `my-template` is a npm module:
+For example, to use `my-custom-template.js`, you would enter the following in the command line:
 
 ```bash
-methods lodash lodash.md my-template
+methods lodash lodash.md my_custom_template.js
+```
+Or if `my-template` is in node_modules:
+
+```bash
+methods lodash lodash.md my_custom_template
 ```
 
-### Template example
+### Example template
 
-Lo-Dash templates are used to generate the output, and the only context passed into the templates is the array of properties generated.
+These are just Lo-Dash templates, keeping in mind that the only context passed into the templates is the array of properties generated.
 
 ```js
 module.exports = [
@@ -156,7 +215,7 @@ module.exports = [
 ].join('');
 ```
 
-## Authors
+## Author
 
 **Jon Schlinkert**
 
