@@ -3,17 +3,15 @@
  * Copyright (c) 2014 Jon Schlinkert, contributors.
  * Licensed under the MIT license.
  */
-
-'use strict';
-
 // Node.js
-var path  = require('path');
+const path  = require('path');
 
 // node_modules
-var chalk    = require('chalk');
-var file     = require('fs-utils');
-var template = require('template');
-var _        = require('lodash');
+const chalk    = require('chalk');
+const file     = require('fs-utils');
+const template = require('template');
+const _        = require('lodash');
+
 
 var success = chalk.green;
 var templates = require('./lib/template');
