@@ -1,4 +1,4 @@
-#! /usr/bin/env node
+#!/usr/bin/env node
 
 // Node.js
 var path      = require('path');
@@ -13,8 +13,8 @@ var warn      = chalk.yellow;
 var error     = chalk.red;
 
 // Local libs
-var methods   = require('../index');
-var templates = require('../lib/template');
+var methods   = require(path.resolve(__dirname, '../index'));
+var templates = require(path.resolve(__dirname, '../lib/template'));
 
 // Args
 var src, dest, tmpl, name = '';
