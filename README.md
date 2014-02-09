@@ -68,83 +68,26 @@ See [templates](#templates) for additional options.
 
 ## Templates
 
+See [examples](./examples/) of generated files.
+
 ### base
 
 The `base` template does not need to be specified and will generate a simple, markdown-formatted list of methods.
 
 Try running `methods lodash` in the command line (assuming [Lo-Dash](http://lodash.com/) is already installed locally). If successful, a markdown file, `lodash.md`, will have been saved to the current directory, and inside will be something like:
 
-```markdown
-# lodash properties
+![image](https://f.cloud.github.com/assets/383994/2119396/14b0692e-9164-11e3-8184-44d9a3f1429f.png)
 
-* _
-* after
-* all
-* any
-* assign
-* at
-* bind
-* bindAll
-* bindKey
-* chain
-etc...
-
-```
 If the destination path ends in a `.json` file extension, a JSON file will be generated instead, e.g.:
 
-```js
-[
-  "_",
-  "after",
-  "all",
-  "any",
-  "assign",
-  "at",
-  "bind",
-  ...
-]
-```
+![image](https://f.cloud.github.com/assets/383994/2119401/5757f512-9164-11e3-999b-d1458bf7cbb4.png)
+
 
 ### docs
 
 The `docs` template, specified with `methods lodash lodash.md docs`, will generate a markdown-formatted "starter" file for documentation. Using the Lo-Dash example from the last section, the resuls would look something like this:
 
-```markdown
-# lodash methods
-
-# _
-Type: `undefined`
-
-Default: `undefined`
-
-# after
-Type: `undefined`
-
-Default: `undefined`
-
-# all
-Type: `undefined`
-
-Default: `undefined`
-
-# any
-Type: `undefined`
-
-Default: `undefined`
-
-# assign
-Type: `undefined`
-
-Default: `undefined`
-
-# at
-Type: `undefined`
-
-Default: `undefined`
-
-etc...
-
-```
+![image](https://f.cloud.github.com/assets/383994/2119395/f99ea0a6-9163-11e3-9fec-7e341aa8aaf4.png)
 
 ### yaml
 
@@ -152,40 +95,8 @@ Like the other templates, the `yaml` template is specified as a fourth paramter.
 
 The output for the Lo-Dash example would look something like:
 
-```yaml
-...
-bindAll:
-  - Type:        String
-  - Default:     foo
-  - Description: bar
-  - Example:     baz
+![image](https://f.cloud.github.com/assets/383994/2119399/2dc3a778-9164-11e3-83d3-a590e192db56.png)
 
-bindKey:
-  - Type:        String
-  - Default:     foo
-  - Description: bar
-  - Example:     baz
-
-chain:
-  - Type:        String
-  - Default:     foo
-  - Description: bar
-  - Example:     baz
-
-clone:
-  - Type:        String
-  - Default:     foo
-  - Description: bar
-  - Example:     baz
-
-cloneDeep:
-  - Type:        String
-  - Default:     foo
-  - Description: bar
-  - Example:     baz
-
-  ... cont.
-```
 
 ## Custom templates
 

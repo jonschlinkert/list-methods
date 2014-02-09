@@ -1,0 +1,861 @@
+# =============================================
+# lodash methods
+# =============================================
+
+_:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+after:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+all:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+any:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+assign:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+at:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+bind:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+bindAll:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+bindKey:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+chain:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+clone:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+cloneDeep:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+collect:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+compact:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+compose:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+constant:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+contains:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+countBy:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+create:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+createCallback:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+curry:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+debounce:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+defaults:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+defer:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+delay:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+detect:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+difference:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+drop:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+each:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+eachRight:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+escape:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+every:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+extend:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+filter:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+find:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+findIndex:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+findKey:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+findLast:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+findLastIndex:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+findLastKey:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+findWhere:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+first:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+flatten:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+foldl:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+foldr:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+forEach:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+forEachRight:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+forIn:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+forInRight:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+forOwn:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+forOwnRight:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+functions:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+groupBy:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+has:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+head:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+identity:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+include:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+indexBy:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+indexOf:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+initial:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+inject:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+intersection:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+invert:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+invoke:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+isArguments:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+isArray:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+isBoolean:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+isDate:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+isElement:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+isEmpty:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+isEqual:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+isFinite:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+isFunction:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+isNaN:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+isNull:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+isNumber:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+isObject:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+isPlainObject:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+isRegExp:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+isString:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+isUndefined:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+keys:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+last:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+lastIndexOf:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+map:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+mapValues:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+max:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+memoize:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+merge:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+methods:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+min:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+mixin:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+noConflict:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+noop:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+now:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+object:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+omit:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+once:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+pairs:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+parseInt:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+partial:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+partialRight:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+pick:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+pluck:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+property:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+pull:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+random:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+range:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+reduce:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+reduceRight:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+reject:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+remove:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+rest:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+result:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+runInContext:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+sample:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+select:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+shuffle:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+size:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+some:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+sortBy:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+sortedIndex:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+tail:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+take:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+tap:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+template:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+throttle:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+times:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+toArray:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+transform:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+unescape:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+union:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+uniq:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+unique:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+uniqueId:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+unzip:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+values:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+where:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+without:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+wrap:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+xor:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+zip:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz
+
+zipObject:
+  - Type:        String
+  - Default:     foo
+  - Description: bar
+  - Example:     baz

@@ -65,7 +65,7 @@ if (tmpl in templates) {
 // a destination was given:
 if(dest) {
   if(file.ext(dest) === 'json') {
-    methods.writeData(dest, src);
+    methods.writeDataFile(dest, src);
   } else if(file.ext(dest) === 'yml') {
     methods.writeFile(dest, src, {template: templates.yaml});
   } else {
