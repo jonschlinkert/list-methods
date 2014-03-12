@@ -1,9 +1,9 @@
 # =============================================
-# <%= data.name %> methods
+# API methods for <%= data.name %>
 # =============================================
 <% _.forEach(data, function(fn) { %>
 <%- fn %>:
-  - Type:        String
+  - Type:        undefined
   - Default:     foo
   - Description: bar
   - Example:     baz
