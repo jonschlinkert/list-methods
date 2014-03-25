@@ -1,77 +1,127 @@
 #!/usr/bin/env node
 
-// Node.js
-var path      = require('path');
-
-// node_modules
-var prompt    = require('prompt');
-var chalk     = require('chalk');
-var file      = require('fs-utils');
-
-var success   = chalk.green;
-var warn      = chalk.yellow;
-var error     = chalk.red;
+const path     = require('path');
+const relative = require('relative');
+const file     = require('fs-utils');
+const log      = require('verbalize');
+const argv     = require('minimist')(process.argv.slice(2));
 
 // Local libs
-var methods   = require(path.resolve(__dirname, '../index'));
-var templates = require(path.resolve(__dirname, '../lib/template'));
+var methods    = require('../');
+var templates  = require('../lib/template');
 
-// Args
-var src, dest, tmpl, name = '';
 
-if(process.argv.length === 2) {
-  // If no destination was given
-  methods.writeFile('docs.md', file.findFile('*.js'), {template: templates.docs});
-  return;
-} else {
-  src  = process.argv[2];
-  dest = process.argv[3];
+/**
+ * Set the runner with verbalize
+ */
+
+log.runner = 'methods';
+
+
+/**
+ * Args
+ */
+
+// `methods` => process.argv[1]
+var src  = argv._[0] || argv.s || argv.src,      // => process.argv[2]
+    dest = argv._[1] || argv.d || argv.dest,     // => process.argv[3]
+    tmpl = argv._[2] || argv.t || argv.template; // => process.argv[4]
+
+/**
+ * Start
+ */
+
+log.writeln();
+
+
+/**
+ * Rewrite paths to be relative to CWD.
+ *
+ * @param {String} the filepath
+ * @return {String} the relative path
+ * @api private
+ */
+
+function local(filepath) {
+  return relative(process.cwd(), filepath);
 }
 
-if(process.argv[4]) {
-  tmpl = process.argv[4];
-  name = tmpl;
+/**
+ * Write a file with the list of methods found on the
+ * specified object.
+ *
+ * @param   {String}  src       The file to read for methods.
+ * @param   {String}  dest      The destination file.
+ * @param   {String}  template  The template to use for the list.
+ *
+ * @return {String}
+ * @api public
+ */
+
+function writeMethods(src, dest, template) {
+  log.run('reading', src);
+
+  // Write the file
+  methods.writeFile(dest, src, {template: template.content});
+
+  // Log a success message.
+  log.writeln();
+  log.success('  methods [done]');
 }
 
-function success(filepath) {
-  console.log(chalk.green('\n>> Saved file ') +
-    '"' + filepath + '.json' + '"' + success(' OK'));
-};
-if (tmpl in templates) {
-  tmpl = templates[tmpl];
-  console.warn('Using built-in template:', name, success('OK'));
-} else if(tmpl) {
-  try {
-    // If it's a string, try to require it as a npm module.
-    tmpl = require(opts.template);
-    console.warn('Requiring template:', name, 'from node_modules', success('OK'));
-  } catch (e) {
+
+/**
+ * Defaults
+ */
+
+// If a template is given
+if (tmpl) {
+  if (tmpl in templates) {
+    tmpl = {
+      name: tmpl,
+      content: templates[tmpl]
+    };
+    log.run('loading', 'built-in template:', tmpl.name);
+  } else {
     try {
-      // If that doesn't work, try to require it locally.
-      tmpl = require(path.resolve(opts.template));
-      console.warn('Requiring template:', name, success('OK'));
-    } catch(e) {
-      // As a last resort, try to use it directly, or
-      // fallback on the built-in "docs" template
-      tmpl = opts.template || templates.docs;
-      console.warn('Using the "docs" template.', success('OK'));
+      log.run('loading', 'node_modules template:',  tmpl);
+      tmpl = require(tmpl);
+    } catch(err) {
+      try {
+        log.run('loading', 'local template:',  tmpl);
+        tmpl = require(path.resolve(tmpl));
+      } catch(err) {
+        log.error('Could not load tempalte', tmpl, err);
+      }
     }
   }
 } else {
-  tmpl = templates.docs;
-  console.warn('Using template:', name, success('OK'));
+  tmpl = {
+    name: 'docs',
+    content: templates.docs
+  };
+  log.run('loading', 'built-in template', tmpl.name);
 }
 
-// a destination was given:
-if(dest) {
-  if(file.ext(dest) === 'json') {
-    methods.writeDataFile(dest, src);
-  } else if(file.ext(dest) === 'yml') {
-    methods.writeFile(dest, src, {template: templates.yaml});
-  } else {
-    methods.writeFile(dest, src, {template: tmpl});
+
+// If a dest is given
+if (dest) {
+  if (path.extname(dest) === '.yml') {
+    tmpl = tmpl || {
+      name: 'yaml',
+      content: templates.yaml
+    };
   }
-} else {
-  // If no destination was given
-  methods.writeFile(file.base(src) + '.md', src, {template: tmpl});
 }
+
+
+src  = src  || file.findFile('index.js') || file.findFile('*.js');
+dest = dest || local(file.name(src) + '.md');
+
+
+
+/**
+ * End
+ */
+
+writeMethods(src, dest, tmpl);

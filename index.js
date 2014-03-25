@@ -3,18 +3,26 @@
  * Copyright (c) 2014 Jon Schlinkert, contributors.
  * Licensed under the MIT license.
  */
-// Node.js
-const path  = require('path');
 
-// node_modules
-const chalk    = require('chalk');
+const path     = require('path');
 const file     = require('fs-utils');
 const template = require('template');
 const _        = require('lodash');
+const log      = require('verbalize');
 
 
-var success = chalk.green;
+// Default template to use.
 var templates = require('./lib/template');
+
+
+/**
+ * Expose `methods`
+ *
+ * @param   {String} The file to read.
+ *
+ * @return  {Object} Methods and source filename.
+ * @api public
+ */
 
 var methods = module.exports = function(src) {
   var name = file.base(src);
@@ -33,16 +41,43 @@ var methods = module.exports = function(src) {
   return _.extend(fn, {name: name});
 };
 
+
+/**
+ * Write file as string.
+ *
+ * @param   {String}  dest
+ * @param   {String}  src
+ * @param   {String}  options
+ *
+ * @return  {String}
+ * @api public
+ */
+
 methods.writeFile = function(dest, src, options) {
   var opts = _.extend({template: templates.docs}, options);
+
   var data = methods(src);
   var output = template(opts.template, _.extend({data: data}, opts));
+
   file.writeFileSync(dest, output);
-  console.log(success('>> File written to'), dest, success('OK'));
+  log.subhead('writing', dest);
 };
 
+
+/**
+ * Write file as data, either JSON or YAML
+ *
+ * @param   {String}  dest
+ * @param   {String}  src
+ *
+ * @return  {String}
+ * @api public
+ */
+
 methods.writeDataFile = function(dest, src) {
+  log.subhead('reading', src);
   var data = methods(src);
+
   file.writeDataSync(dest, data);
-  console.log(success('>> File written to'), dest, success('OK'));
+  log.subhead('writing', dest);
 };
