@@ -1,6 +1,6 @@
 {
   "name": "list-methods",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Easily generate a JSON or markdown list (sorted array) of property names of all enumerable properties, own and inherited, of objects that have function values.",
   "repository": {
     "type": "git",
@@ -24,12 +24,12 @@
     "methods": "./bin/methods"
   },
   "dependencies": {
-    "fs-utils": "~0.3.6",
+    "fs-utils": "~0.4.0",
     "lodash": "~2.4.1",
     "minimist": "0.0.8",
-    "relative": "~0.1.2",
-    "template": "~0.1.5",
-    "verbalize": "0.0.2"
+    "relative": "~0.1.4",
+    "template": "~0.1.6",
+    "verbalize": "~0.1.2"
   },
   "keywords": [
     "lodash",

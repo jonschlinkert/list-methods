@@ -6,9 +6,8 @@ const file     = require('fs-utils');
 const log      = require('verbalize');
 const argv     = require('minimist')(process.argv.slice(2));
 
-// Local libs
-var methods    = require('../');
-var templates  = require('../lib/template');
+const methods    = require('../');
+const templates  = require('../lib/template');
 
 
 /**

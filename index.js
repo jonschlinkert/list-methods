@@ -7,8 +7,8 @@
 const path     = require('path');
 const file     = require('fs-utils');
 const template = require('template');
-const _        = require('lodash');
 const log      = require('verbalize');
+const _        = require('lodash');
 
 
 // Default template to use.
