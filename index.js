@@ -1,26 +1,37 @@
 /**
- * list-methods
+ * list-methods <https://github.com/jonschlinkert/list-methods>
+ *
  * Copyright (c) 2014 Jon Schlinkert, contributors.
  * Licensed under the MIT license.
  */
+'use strict';
 
-const path     = require('path');
-const file     = require('fs-utils');
-const template = require('template');
-const log      = require('verbalize');
-const _        = require('lodash');
+var path     = require('path');
+var file     = require('fs-utils');
+var template = require('template');
+var log      = require('verbalize');
+var _        = require('lodash');
 
 
 // Default template to use.
 var templates = require('./lib/template');
 
+function functions(object) {
+  var result = [];
+  for (var i in object) {
+    if (object.hasOwnProperty(i) && typeof object[i] === 'function') {
+      result.push(i);
+    }
+  }
+  return result.sort();
+}
+
 
 /**
- * Expose `methods`
+ * ## methods
  *
- * @param   {String} The file to read.
- *
- * @return  {Object} Methods and source filename.
+ * @param   {String} `src` The file to read.
+ * @return  {Object} Returns an object with the source file `name` and the array of `methods`.
  * @api public
  */
 
@@ -36,19 +47,33 @@ var methods = module.exports = function(src) {
       source = require(src);
     } catch(e) {}
   }
-
-  var fn = _.methods(source);
-  return _.extend(fn, {name: name});
+  return {
+    name: name,
+    methods: functions(source)
+  }
 };
 
 
 /**
- * Write file as string.
+ * ## .writeFile
  *
- * @param   {String}  dest
- * @param   {String}  src
- * @param   {String}  options
+ * As a way of kickstarting documentation, this writes the list of methods
+ * to a text file. Lodash templates are used to generate the file, so the
+ * output is completely customizable.
  *
+ * **Example**:
+ *
+ * ```js
+ * methods.writeFile('api.md', 'index.js');
+ * // generates a file, "api.md", using a template in lib/templates.js
+ * ```
+ *
+ * **Params:**
+ *
+ * @param   {String} `dest`
+ * @param   {String} `src`
+ * @param   {String} `options`
+ *   @option {String} `template` Optionally specify a template to use.
  * @return  {String}
  * @api public
  */
@@ -65,11 +90,25 @@ methods.writeFile = function(dest, src, options) {
 
 
 /**
- * Write file as data, either JSON or YAML
+ * ## .writeDataFile
  *
- * @param   {String}  dest
- * @param   {String}  src
+ * Generate a JSON or YAML file from the list of methods. Automatically detects the
+ * format to use based on the given file extension.
  *
+ * **Examples**:
+ *
+ * ```js
+ * methods.writeDataFile('api.yml', 'index.js');
+ * // generates a YAML file, "api.yml" using a template in lib/templates.js
+ *
+ * methods.writeDataFile('api.json', 'index.js');
+ * // generates a JSON file, "api.json" using a template in lib/templates.js
+ * ```
+ *
+ * **Params:**
+ *
+ * @param   {String} `dest`
+ * @param   {String} `src`
  * @return  {String}
  * @api public
  */

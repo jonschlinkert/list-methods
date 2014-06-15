@@ -1,14 +1,3 @@
-# {%= name %} [![NPM version](https://badge.fury.io/js/{%= name %}.png)](http://badge.fury.io/js/{%= name %})
-
-> {%= description %}
-
-<!-- toc -->
-
-## Quickstart
-{%= docs("install") %}
-
-## Usage
-
 Run the `methods` command without any arguments and a markdown file will be generated for `index.js`, or the first javascript file found in the current directory.
 
 ### args
@@ -71,19 +60,3 @@ You can either specify the filepath to the custom template, or the name of a npm
 ```bash
 methods -t my-template
 ```
-
-## Author
-
-**Jon Schlinkert**
-
-+ [github/jonschlinkert](https://github.com/jonschlinkert)
-+ [twitter/jonschlinkert](http://twitter.com/jonschlinkert)
-
-
-## License
-Copyright (c) 2014 [Jon Schlinkert](http://twitter.com/jonschlinkert)
-Released under the [MIT license](./LICENSE-MIT)
-
-***
-
-{%= include("footer") %}

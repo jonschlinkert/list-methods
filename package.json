@@ -1,6 +1,6 @@
 {
   "name": "list-methods",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Easily generate a JSON or markdown list (sorted array) of property names of all enumerable properties, own and inherited, of objects that have function values.",
   "repository": {
     "type": "git",
@@ -38,6 +38,8 @@
     "properties"
   ],
   "devDependencies": {
-    "verb": "~0.1.20"
+    "verb": "^0.2.13",
+    "verb-tag-jscomments": "^0.1.2",
+    "verb-tag-methods": "^0.1.2"
   }
 }
