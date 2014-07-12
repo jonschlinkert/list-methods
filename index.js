@@ -4,27 +4,19 @@
  * Copyright (c) 2014 Jon Schlinkert, contributors.
  * Licensed under the MIT license.
  */
+
 'use strict';
 
-var path     = require('path');
-var file     = require('fs-utils');
-var template = require('template');
-var log      = require('verbalize');
-var _        = require('lodash');
+var path      = require('path');
+var file      = require('fs-utils');
+var template  = require('template');
+var log       = require('verbalize');
+var extend    = require('xtend');
+var functions = require('method-names');
 
 
 // Default template to use.
 var templates = require('./lib/template');
-
-function functions(object) {
-  var result = [];
-  for (var i in object) {
-    if (object.hasOwnProperty(i) && typeof object[i] === 'function') {
-      result.push(i);
-    }
-  }
-  return result.sort();
-}
 
 
 /**
@@ -50,7 +42,7 @@ var methods = module.exports = function(src) {
   return {
     name: name,
     methods: functions(source)
-  }
+  };
 };
 
 
@@ -79,10 +71,10 @@ var methods = module.exports = function(src) {
  */
 
 methods.writeFile = function(dest, src, options) {
-  var opts = _.extend({template: templates.docs}, options);
+  var opts = extend({template: templates.docs}, options);
 
   var data = methods(src);
-  var output = template(opts.template, _.extend({data: data}, opts));
+  var output = template(opts.template, extend({data: data}, opts));
 
   file.writeFileSync(dest, output);
   log.subhead('writing', dest);
